@@ -1,0 +1,12 @@
+{
+  "name": "pairsum",
+  "version": "1.0.0",
+  "description": "function that evals an integer array to find pairs that match target sum",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch *.js"
+  },
+  "author": "Scott Anderson",
+  "license": "ISC"
+}
