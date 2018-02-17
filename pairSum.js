@@ -21,11 +21,13 @@ function pairSum(intArray, targetSum) {
     // feels like this could be a O(n^2) solution...possible to optimize?
 
     // quick exit.....must have at least 2 integers
-    if (intArray.length < 2){
+    if (intArray.length < 2) {
         return (0);
     };
 
-    // default for sort is a lexical sort....provide a compare function using ES6 form of anonymous function
+    // default for sort is a lexical sort....
+    // provide a compare function using ES6 form of anonymous function
+    // result will be an integer sort
     let sortedArray = intArray.sort((a, b) => a - b);
 
     let currentIndex = 0;
@@ -34,8 +36,8 @@ function pairSum(intArray, targetSum) {
     let currentSum = 0;
     let prevInt1 = null;
     let prevInt2 = null;
-        
-    while((currentIndex < intArray.length)) {
+
+    while ((currentIndex < sortedArray.length)) {
 
         let int1 = parseInt(sortedArray[currentIndex]);
         let int2 = parseInt(sortedArray[nextIndex]);
@@ -48,16 +50,16 @@ function pairSum(intArray, targetSum) {
             continue;
         };
 
-        if(currentSum == targetSum){
+        if (currentSum == targetSum) {
             // skip value that's been evaluated so fewer potential dupe pairs
-            if ((currentIndex > 0) && 
-                (sortedArray[currentIndex] === sortedArray[currentIndex -1])) {
+            if ((currentIndex > 0) &&
+                (sortedArray[currentIndex] === sortedArray[currentIndex - 1])) {
                 currentIndex++;
                 nextIndex = currentIndex + 1;
                 continue;
             } else {
                 // prevent dupes...
-                if(prevInt1 != int1 && prevInt2 != int2){
+                if (prevInt1 != int1 && prevInt2 != int2) {
                     prevInt1 = int1;
                     prevInt2 = int2;
                     magicPair.push([int1, int2]);
@@ -76,7 +78,7 @@ function pairSum(intArray, targetSum) {
 
     console.log(magicPair);
 
-    return(magicPair.length);
+    return (magicPair.length);
 };
 
 module.exports = pairSum;
